@@ -4,12 +4,12 @@ Summarize content with the ability to toggle visibility.
 ## Use
 Install with Yarn:
 ```
-$ yarn add summarize
+$ yarn add dtcmedia-summarize
 ```
 
-Import to script:
+Import to module:
 ```javascript
-import summarize from 'summarize';
+import summarize from 'dtcmedia-summarize';
 ```
 
 Initialize Summarize:

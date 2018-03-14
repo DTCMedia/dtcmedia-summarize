@@ -1,11 +1,11 @@
 {
-  "name": "summarize",
+  "name": "dtcmedia-summarize",
   "version": "0.0.0-development",
   "description": "Summarize content with the ability to toggle visibility.",
   "main": "./summarize.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DTCMedia/summarize.git"
+    "url": "https://github.com/DTCMedia/dtcmedia-summarize.git"
   },
   "keywords": [
     "toggle",
@@ -17,7 +17,7 @@
   "author": "DTC Media (https://www.dtcmedia.nl/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DTCMedia/summarize/issues"
+    "url": "https://github.com/DTCMedia/dtcmedia-summarize/issues"
   },
-  "homepage": "https://github.com/DTCMedia/summarize#readme"
+  "homepage": "https://github.com/DTCMedia/dtcmedia-summarize#readme"
 }
