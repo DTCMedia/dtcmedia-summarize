@@ -4,47 +4,47 @@ function init() {
      */
     Array.from(document.getElementsByClassName('js-summarize')).forEach(instance => {
         const trigger = instance.getElementsByClassName('js-summarize-trigger')[0];
-        const container = instance.getElementsByClassName('js-summarize-container')[0];
+        const content = instance.getElementsByClassName('js-summarize-content')[0];
 
         /**
          * Do not initialize without required selectors
          */
-        if (!trigger || !container) {
+        if (!trigger || !content) {
             return;
         }
 
         /**
-         * Check if container needs to be summarized
+         * Check if content needs to be summarized
          */
         const shouldSummarize = () => {
-            return container.getBoundingClientRect().height >= parseInt(container.getAttribute('data-summarize-height')) + parseInt(container.getAttribute('data-summarize-overlap')) && !instance.classList.contains('is-active');
+            return content.getBoundingClientRect().height >= parseInt(content.getAttribute('data-summarize-height')) + parseInt(content.getAttribute('data-summarize-overlap')) && !instance.classList.contains('is-active');
         };
 
         /**
-         * Toggle summarized container visibility
+         * Toggle summarized content visibility
          */
         const toggle = () => {
             if (shouldSummarize()) {
                 trigger.innerHTML = trigger.getAttribute('data-summarize-more');
-                container.style.maxHeight = parseInt(container.getAttribute('data-summarize-height')) + 'px';
-                container.style.overflow = 'hidden';
+                content.style.maxHeight = parseInt(content.getAttribute('data-summarize-height')) + 'px';
+                content.style.overflow = 'hidden';
                 instance.classList.add('is-summarized');
                 instance.classList.add('is-active');
             } else {
                 trigger.innerHTML = trigger.getAttribute('data-summarize-less');
-                container.style.maxHeight = 'none';
-                container.style.overflow = 'visible';
+                content.style.maxHeight = 'none';
+                content.style.overflow = 'visible';
                 instance.classList.remove('is-active');
             }
         };
 
         /**
-         * Hide summarized container on page load
+         * Toggle visibility for summarized content on page load
          */
         toggle();
 
         /**
-         * Add click event to toggle visibility on summarized containers
+         * Toggle visibility for summarized content on click
          */
         trigger.onclick = () => {
             toggle();

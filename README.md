@@ -1,18 +1,18 @@
 # Summarize
-Hide part of the content with the ability to toggle visibility.
+Summarize content with the ability to toggle visibility.
 
 ## Use
-Install with Yarn
+Install with Yarn:
 ```
 $ yarn add summarize
 ```
 
-Import to script
+Import to script:
 ```javascript
 import summarize from 'summarize';
 ```
 
-Initialize Summarize
+Initialize Summarize:
 ```javascript
 summarize.init();
 ```
