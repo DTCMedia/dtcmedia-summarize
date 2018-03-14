@@ -24,7 +24,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 data-summarize-height | Number | Maximum height for the summary.
 data-summarize-overlap |  Number | Minimum overlap before the content gets summarized.
-data-summarize-more` |  String | Button text for when content is hidden.
+data-summarize-more |  String | Button text for when content is hidden.
 data-summarize-less |  String | Button text for when content is visible.
 
 Use the following code example to get you started:
