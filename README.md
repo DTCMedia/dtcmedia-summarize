@@ -18,6 +18,15 @@ summarize.init();
 ```
 
 ## Usage
+Set these data attributes for Summarize to use:
+
+Attribute | Element | Type | Description
+--------- | ------- | ---- | -----------
+data-summarize-height | `js-summarize-content` | Number | Maximum height for the summary.
+data-summarize-overlap | `js-summarize-content` |  Number | Minimum overlap before the content gets summarized.
+data-summarize-more | `js-summarize-trigger` |  String | Button text for when content is hidden.
+data-summarize-less | `js-summarize-trigger` |  String | Button text for when content is visible.
+
 Use the following code example to get you started:
 ```html
 <article class="js-summarize">
