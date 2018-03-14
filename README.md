@@ -3,7 +3,7 @@ Summarize content with the ability to toggle visibility.
 
 ## Install
 Install with Yarn:
-```
+```javascript
 $ yarn add dtcmedia-summarize
 ```
 
