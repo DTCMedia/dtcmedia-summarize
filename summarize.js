@@ -1,55 +1,92 @@
-function init() {
+module.exports = function(debug) {
     /**
-     * Search for instances and summarize them
+     * Show notices for debugging purposes
+     */
+    let notices = debug === true ? true : false;
+
+    if(notices) {
+        console.log('Summarize ~ Debug mode');
+    }
+
+    /**
+     * Search for instances to summarize
      */
     Array.from(document.getElementsByClassName('js-summarize')).forEach(instance => {
-        const trigger = instance.getElementsByClassName('js-summarize-trigger')[0];
-        const content = instance.getElementsByClassName('js-summarize-content')[0];
+
+        if(notices) {
+            console.log('Summarize ~ Instance found');
+        }
 
         /**
-         * Do not initialize without required selectors
+         * Obtain elements required to summarize content
          */
-        if (!trigger || !content) {
+        const content = instance.getElementsByClassName('js-summarize-content')[0];
+        const trigger = instance.getElementsByClassName('js-summarize-trigger')[0];
+
+        if (!content || !trigger) {
+
+            if(notices) {
+                console.log('Summarize ~ Missing class selector');
+            }
+
             return;
         }
 
         /**
-         * Check if content needs to be summarized
+         * Obtain settings required to summarize content
          */
-        const shouldSummarize = () => {
-            return content.getBoundingClientRect().height >= parseInt(content.getAttribute('data-summarize-height')) + parseInt(content.getAttribute('data-summarize-overlap')) && !instance.classList.contains('is-active');
-        };
+        const contentHeight = parseInt(content.getAttribute('data-summarize-height'));
+        const contentOverlap = parseInt(content.getAttribute('data-summarize-overlap'));
+        const triggerLess = trigger.getAttribute('data-summarize-less');
+        const triggerMore = trigger.getAttribute('data-summarize-more');
+
+        if (!contentHeight || !contentOverlap || !triggerLess || !triggerMore) {
+
+            if(notices) {
+                console.log('Summarize ~ Missing data attribute');
+            }
+
+            return;
+        }
 
         /**
-         * Toggle summarized content visibility
+         * Summarize content if needed
          */
-        const toggle = () => {
-            if (shouldSummarize()) {
-                trigger.innerHTML = trigger.getAttribute('data-summarize-more');
-                content.style.maxHeight = parseInt(content.getAttribute('data-summarize-height')) + 'px';
+        const summarize = () => {
+            if (content.getBoundingClientRect().height >= contentHeight + contentOverlap && !instance.classList.contains('is-active')) {
+                content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 33.333%, transparent 100%)';
+                content.style.maxHeight = contentHeight + 'px';
                 content.style.overflow = 'hidden';
                 instance.classList.add('is-summarized');
                 instance.classList.add('is-active');
+                trigger.innerHTML = triggerMore;
+
+                if (notices) {
+                    console.log('Summarize ~ Content hidden');
+                }
             } else {
-                trigger.innerHTML = trigger.getAttribute('data-summarize-less');
+                content.style.WebkitMaskImage = 'none';
                 content.style.maxHeight = 'none';
                 content.style.overflow = 'visible';
                 instance.classList.remove('is-active');
+                trigger.innerHTML = triggerLess;
+
+                if (notices) {
+                    console.log('Summarize ~ Content visible');
+                }
             }
-        };
+        }
 
         /**
-         * Toggle visibility for summarized content on page load
+         * Execute summarize on page load
          */
-        toggle();
+        summarize();
 
         /**
-         * Toggle visibility for summarized content on click
+         * Execute summarize on click
          */
         trigger.onclick = () => {
-            toggle();
-        };
+            summarize();
+        }
     });
 }
-
-export default {init}
