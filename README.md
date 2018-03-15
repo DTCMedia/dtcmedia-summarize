@@ -7,36 +7,50 @@ Install with Yarn:
 $ yarn add dtcmedia-summarize
 ```
 
-Import to module:
+Import module:
 ```javascript
 import summarize from 'dtcmedia-summarize';
 ```
 
-Initialize Summarize:
+Summarize with defaults:
 ```javascript
-summarize.init();
+summarize();
+```
+
+Summarize with settings:
+
+Option | Type | Default
+------ | ---- | -------
+debug | boolean | false
+defaultStyles |  boolean | true
+selector |  String | '.js-summarize'
+contentSelector |  String | '.js-summarize-content'
+triggerSelector |  String | '.js-summarize-trigger'
+
+```javascript
+summarize({
+    debug: false,
+    defaultStyles: true,
+    selector: '.js-summarize',
+    contentSelector: '.js-summarize-content',
+    triggerSelector: '.js-summarize-trigger'
+});
 ```
 
 ## Usage
-Set these data attributes for Summarize to use:
+Setup the correct markup with data attributes:
 
 Attribute | Type | Description
 --------- | ---- | -----------
-data-summarize-height | Number | Maximum height for the summary.
-data-summarize-overlap |  Number | Minimum overlap before the content gets summarized.
-data-summarize-more |  String | Button text for when content is hidden.
-data-summarize-less |  String | Button text for when content is visible.
+height | Number | Maximum height for the summary.
+overlap |  Number | Minimum overlap before the content gets summarized.
+more |  String | Button text for when content is hidden.
+less |  String | Button text for when content is visible.
 
 Use the following code example to get you started:
 ```html
 <article class="js-summarize">
-   <div class="js-summarize-content" data-summarize-height="200" data-summarize-overlap="80">
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum euismod lacinia. Aliquam euismod
-       diam eu est aliquet porta. Praesent tincidunt purus non leo scelerisque mattis. Duis vitae sagittis risus. Phasellus
-       pharetra tortor sed tortor mattis, a tempor nisl tristique. Cras in interdum eros. Duis commodo sollicitudin mattis.
-       Aenean eu euismod augue. Morbi hendrerit aliquet pharetra. Cras vitae accumsan massa, ut vulputate lorem. Sed
-       scelerisque mauris iaculis, molestie est at, venenatis eros.</p>
-   </div>
+   <div class="js-summarize-content" data-summarize-height="200" data-summarize-overlap="80">Lorem ipsum...</div>
    <button class="js-summarize-trigger" data-summarize-more="Show more" data-summarize-more="Show less">Show more</button>
 </article>
 ```
