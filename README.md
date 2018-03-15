@@ -17,6 +17,7 @@ Summarize with defaults:
 summarize();
 ```
 
+## Settings
 Summarize with settings:
 
 Option | Type | Default
