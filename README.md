@@ -24,7 +24,7 @@ Option | Type | Default
 ------ | ---- | -------
 debug | boolean | false
 defaultStyles |  boolean | true
-selector |  String | '.js-summarize'
+parentSelector |  String | '.js-summarize'
 contentSelector |  String | '.js-summarize-content'
 triggerSelector |  String | '.js-summarize-trigger'
 
