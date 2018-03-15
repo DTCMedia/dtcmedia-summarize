@@ -1,6 +1,6 @@
 {
   "name": "dtcmedia-summarize",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Summarize content with the ability to toggle visibility.",
   "main": "./dist/summarize.min.js",
   "repository": {
@@ -9,6 +9,7 @@
   },
   "keywords": [
     "toggle",
+    "summary",
     "javascript",
     "vanilla",
     "ES6",
