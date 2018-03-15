@@ -1,8 +1,8 @@
 {
   "name": "dtcmedia-summarize",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Summarize content with the ability to toggle visibility.",
-  "main": "./summarize.js",
+  "main": "./dist/summarize.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DTCMedia/summarize.git"
@@ -11,13 +11,26 @@
     "toggle",
     "javascript",
     "vanilla",
-    "babel",
-    "ES6"
+    "ES6",
+    "babel"
   ],
   "author": "DTC Media (https://www.dtcmedia.nl/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DTCMedia/summarize/issues"
   },
-  "homepage": "https://github.com/DTCMedia/summarize#readme"
+  "homepage": "https://github.com/DTCMedia/summarize#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.41",
+    "@babel/preset-env": "^7.0.0-beta.41",
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "build": "gulp scripts && gulp scripts --minify"
+  }
 }
