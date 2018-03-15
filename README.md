@@ -32,7 +32,7 @@ triggerSelector |  String | '.js-summarize-trigger'
 summarize({
     debug: false,
     defaultStyles: true,
-    selector: '.js-summarize',
+    parentSelector: '.js-summarize',
     contentSelector: '.js-summarize-content',
     triggerSelector: '.js-summarize-trigger'
 });
