@@ -8,8 +8,9 @@ module.exports = function (userSettings) {
     debug: false,
     defaultStyles: true,
     parentSelector: '.js-summarize',
-    contentSelector: '.js-summarize-content',
-    triggerSelector: '.js-summarize-trigger'
+    contentSelector: '[data-summarize-height], [data-summarize-overlap]',
+    toggleSelector: '[data-summarize-more], [data-summarize-less]',
+    toggleTextSelector: '[data-summarize-more], [data-summarize-less]'
   };
   /**
    * Replace default settings with user settings
@@ -23,7 +24,8 @@ module.exports = function (userSettings) {
     console.log('  defaultStyles: ' + settings.defaultStyles);
     console.log('  parentSelector: \'' + settings.parentSelector + '\'');
     console.log('  contentSelector: \'' + settings.contentSelector + '\'');
-    console.log('  triggerSelector: \'' + settings.triggerSelector + '\'');
+    console.log('  toggleSelector: \'' + settings.toggleSelector + '\'');
+    console.log('  toggleTextSelector: \'' + settings.toggleTextSelector + '\'');
   }
   /**
    * Search for instances to summarize
@@ -40,9 +42,13 @@ module.exports = function (userSettings) {
 
 
     var content = instance.querySelectorAll(settings.contentSelector)[0];
-    var trigger = instance.querySelectorAll(settings.triggerSelector)[0];
+    var toggle = instance.querySelectorAll(settings.toggleSelector)[0];
+    var toggleText = instance.querySelectorAll(settings.toggleTextSelector)[0];
+    console.log(settings.contentSelector);
+    console.log(settings.toggleSelector);
+    console.log(settings.toggleTextSelector);
 
-    if (!content || !trigger) {
+    if (!content || !toggle || !toggleText) {
       if (settings.debug) {
         console.log('  Missing required elements');
         console.log('  Failed to initialize...');
@@ -57,10 +63,10 @@ module.exports = function (userSettings) {
 
     var contentHeight = parseInt(content.getAttribute('data-summarize-height'));
     var contentOverlap = parseInt(content.getAttribute('data-summarize-overlap'));
-    var triggerLess = trigger.getAttribute('data-summarize-less');
-    var triggerMore = trigger.getAttribute('data-summarize-more');
+    var toggleLess = toggle.getAttribute('data-summarize-less');
+    var toggleMore = toggle.getAttribute('data-summarize-more');
 
-    if (!contentHeight || !contentOverlap || !triggerLess || !triggerMore) {
+    if (!contentHeight || !contentOverlap || !toggleLess || !toggleMore) {
       if (settings.debug) {
         console.log('  Missing required data attributes');
         console.log('  Failed to initialize...');
@@ -86,7 +92,7 @@ module.exports = function (userSettings) {
 
         hideContent();
       } else {
-        trigger.style.display = 'none';
+        toggle.style.display = 'none';
 
         if (settings.debug) {
           console.log('  Instance is not summarized');
@@ -96,12 +102,14 @@ module.exports = function (userSettings) {
 
     var hideContent = function hideContent() {
       instance.classList.remove('is-active');
-      content.style.maxHeight = contentHeight + 'px';
-      trigger.innerHTML = triggerMore;
+      content.classList.remove('is-active');
+      toggle.classList.remove('is-active');
+      toggleText.innerHTML = toggleMore;
 
       if (settings.defaultStyles) {
+        content.style.maxHeight = contentHeight + 'px';
         content.style.overflow = 'hidden';
-        content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 33.333%, transparent 100%)';
+        content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 66.666%, transparent 100%)';
       }
 
       isSummarized = true;
@@ -113,10 +121,12 @@ module.exports = function (userSettings) {
 
     var showContent = function showContent() {
       instance.classList.add('is-active');
-      content.style.maxHeight = 'none';
-      trigger.innerHTML = triggerLess;
+      content.classList.add('is-active');
+      toggle.classList.add('is-active');
+      toggleText.innerHTML = toggleLess;
 
       if (settings.defaultStyles) {
+        content.style.maxHeight = 'none';
         content.style.overflow = 'visible';
         content.style.WebkitMaskImage = 'none';
       }
@@ -137,7 +147,7 @@ module.exports = function (userSettings) {
      * Toggle content visibility on click
      */
 
-    trigger.onclick = function () {
+    toggle.onclick = function () {
       if (shouldSummarize && isSummarized) {
         showContent();
       } else {

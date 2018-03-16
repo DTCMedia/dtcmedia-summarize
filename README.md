@@ -25,16 +25,18 @@ Option | Type | Default
 debug | boolean | false
 defaultStyles |  boolean | true
 parentSelector |  String | '.js-summarize'
-contentSelector |  String | '.js-summarize-content'
-triggerSelector |  String | '.js-summarize-trigger'
+contentSelector |  String | '[data-summarize-height], [data-summarize-overlap]'
+toggleSelector |  String | '[data-summarize-more], [data-summarize-less]'
+toggleTextSelector |  String | '[data-summarize-more], [data-summarize-less]'
 
 ```javascript
 summarize({
     debug: false,
     defaultStyles: true,
     parentSelector: '.js-summarize',
-    contentSelector: '.js-summarize-content',
-    triggerSelector: '.js-summarize-trigger'
+    contentSelector: '[data-summarize-height], [data-summarize-overlap]',
+    toggleSelector: '[data-summarize-more], [data-summarize-less]',
+    toggleTextSelector: '[data-summarize-more] span, [data-summarize-less] span'
 });
 ```
 
@@ -51,7 +53,12 @@ less |  String | Button text for when content is visible.
 Use the following code example to get you started:
 ```html
 <article class="js-summarize">
-   <div class="js-summarize-content" data-summarize-height="200" data-summarize-overlap="80">Lorem ipsum...</div>
-   <button class="js-summarize-trigger" data-summarize-more="Show more" data-summarize-less="Show less">Show more</button>
+    <div class="js-summarize-content" data-summarize-height="200" data-summarize-overlap="80">
+         <p>Lorem ipsum...</p>
+    </div>
+    <button class="js-summarize-trigger" data-summarize-more="Show more" data-summarize-less="Show less">
+         <i class="fa fa-check" aria-hidden="true"></i>
+         <span>Show more</span>
+    </button>
 </article>
 ```

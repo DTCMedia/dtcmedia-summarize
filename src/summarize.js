@@ -7,8 +7,9 @@ module.exports = function (userSettings) {
         debug: false,
         defaultStyles: true,
         parentSelector: '.js-summarize',
-        contentSelector: '.js-summarize-content',
-        triggerSelector: '.js-summarize-trigger'
+        contentSelector: '[data-summarize-height], [data-summarize-overlap]',
+        toggleSelector: '[data-summarize-more], [data-summarize-less]',
+        toggleTextSelector: '[data-summarize-more], [data-summarize-less]',
     };
 
     /**
@@ -22,7 +23,8 @@ module.exports = function (userSettings) {
         console.log('  defaultStyles: ' + settings.defaultStyles);
         console.log('  parentSelector: \'' + settings.parentSelector + '\'');
         console.log('  contentSelector: \'' + settings.contentSelector + '\'');
-        console.log('  triggerSelector: \'' + settings.triggerSelector + '\'');
+        console.log('  toggleSelector: \'' + settings.toggleSelector + '\'');
+        console.log('  toggleTextSelector: \'' + settings.toggleTextSelector + '\'');
     }
 
     /**
@@ -38,9 +40,14 @@ module.exports = function (userSettings) {
          * Obtain elements required to summarize content
          */
         const content = instance.querySelectorAll(settings.contentSelector)[0];
-        const trigger = instance.querySelectorAll(settings.triggerSelector)[0];
+        const toggle = instance.querySelectorAll(settings.toggleSelector)[0];
+        const toggleText = instance.querySelectorAll(settings.toggleTextSelector)[0];
 
-        if (!content || !trigger) {
+        console.log(settings.contentSelector);
+        console.log(settings.toggleSelector);
+        console.log(settings.toggleTextSelector);
+
+        if (!content || !toggle || !toggleText) {
 
             if (settings.debug) {
                 console.log('  Missing required elements');
@@ -55,10 +62,10 @@ module.exports = function (userSettings) {
          */
         const contentHeight = parseInt(content.getAttribute('data-summarize-height'));
         const contentOverlap = parseInt(content.getAttribute('data-summarize-overlap'));
-        const triggerLess = trigger.getAttribute('data-summarize-less');
-        const triggerMore = trigger.getAttribute('data-summarize-more');
+        const toggleLess = toggle.getAttribute('data-summarize-less');
+        const toggleMore = toggle.getAttribute('data-summarize-more');
 
-        if (!contentHeight || !contentOverlap || !triggerLess || !triggerMore) {
+        if (!contentHeight || !contentOverlap || !toggleLess || !toggleMore) {
 
             if (settings.debug) {
                 console.log('  Missing required data attributes');
@@ -84,7 +91,7 @@ module.exports = function (userSettings) {
 
                 hideContent();
             } else {
-                trigger.style.display = 'none';
+                toggle.style.display = 'none';
 
                 if (settings.debug) {
                     console.log('  Instance is not summarized');
@@ -94,12 +101,14 @@ module.exports = function (userSettings) {
 
         const hideContent = () => {
             instance.classList.remove('is-active');
-            content.style.maxHeight = contentHeight + 'px';
-            trigger.innerHTML = triggerMore;
+            content.classList.remove('is-active');
+            toggle.classList.remove('is-active');
+            toggleText.innerHTML = toggleMore;
 
             if(settings.defaultStyles) {
+                content.style.maxHeight = contentHeight + 'px';
                 content.style.overflow = 'hidden';
-                content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 33.333%, transparent 100%)';
+                content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 66.666%, transparent 100%)';
             }
 
             isSummarized = true;
@@ -111,10 +120,12 @@ module.exports = function (userSettings) {
 
         const showContent = () => {
             instance.classList.add('is-active');
-            content.style.maxHeight = 'none';
-            trigger.innerHTML = triggerLess;
+            content.classList.add('is-active');
+            toggle.classList.add('is-active');
+            toggleText.innerHTML = toggleLess;
 
             if(settings.defaultStyles) {
+                content.style.maxHeight = 'none';
                 content.style.overflow = 'visible';
                 content.style.WebkitMaskImage = 'none';
             }
@@ -134,7 +145,7 @@ module.exports = function (userSettings) {
         /**
          * Toggle content visibility on click
          */
-        trigger.onclick = () => {
+        toggle.onclick = () => {
             if(shouldSummarize && isSummarized) {
                 showContent();
             } else {
