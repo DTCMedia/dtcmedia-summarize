@@ -34,9 +34,9 @@ summarize({
     debug: false,
     defaultStyles: true,
     parentSelector: '.js-summarize',
-    contentSelector: '[data-summarize-height], [data-summarize-overlap]',
-    toggleSelector: '[data-summarize-more], [data-summarize-less]',
-    toggleTextSelector: '[data-summarize-more] span, [data-summarize-less] span'
+    contentSelector: 'div',
+    toggleSelector: 'button',
+    toggleTextSelector: 'button span'
 });
 ```
 
