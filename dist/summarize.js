@@ -1,16 +1,21 @@
 "use strict";
 
-module.exports = function (settings) {
+module.exports = function (userSettings) {
   /**
-   * Set user settings or fallback to defaults
+   * Default settings for Summarize
    */
-  settings = {
-    debug: settings.debug === true ? true : false,
-    defaultStyles: settings.defaultStyles === false ? false : true,
-    parentSelector: typeof settings.parentSelector === 'string' ? settings.parentSelector : '.js-summarize',
-    contentSelector: typeof settings.contentSelector === 'string' ? settings.contentSelector : '.js-summarize-content',
-    triggerSelector: typeof settings.triggerSelector === 'string' ? settings.triggerSelector : '.js-summarize-trigger'
+  var defaultSettings = {
+    debug: false,
+    defaultStyles: true,
+    parentSelector: '.js-summarize',
+    contentSelector: '.js-summarize-content',
+    triggerSelector: '.js-summarize-trigger'
   };
+  /**
+   * Replace default settings with user settings
+   */
+
+  var settings = Object.assign(defaultSettings, userSettings);
 
   if (settings.debug) {
     console.log('Summarize ~ Settings');
