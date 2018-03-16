@@ -52,6 +52,6 @@ Use the following code example to get you started:
 ```html
 <article class="js-summarize">
    <div class="js-summarize-content" data-summarize-height="200" data-summarize-overlap="80">Lorem ipsum...</div>
-   <button class="js-summarize-trigger" data-summarize-more="Show more" data-summarize-more="Show less">Show more</button>
+   <button class="js-summarize-trigger" data-summarize-more="Show more" data-summarize-less="Show less">Show more</button>
 </article>
 ```
