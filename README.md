@@ -58,7 +58,7 @@ Use the following code example to get you started:
     </div>
     <button data-summarize-more="Show more" data-summarize-less="Show less">
          <span>Show more</span>
-         <i class="fa fa-angle-right"></i>
+         <i class="fa fa-angle-down"></i>
     </button>
 </article>
 ```
