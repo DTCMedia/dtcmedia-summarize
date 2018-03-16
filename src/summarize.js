@@ -43,10 +43,6 @@ module.exports = function (userSettings) {
         const toggle = instance.querySelectorAll(settings.toggleSelector)[0];
         const toggleText = instance.querySelectorAll(settings.toggleTextSelector)[0];
 
-        console.log(settings.contentSelector);
-        console.log(settings.toggleSelector);
-        console.log(settings.toggleTextSelector);
-
         if (!content || !toggle || !toggleText) {
 
             if (settings.debug) {

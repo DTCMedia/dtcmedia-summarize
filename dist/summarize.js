@@ -44,9 +44,6 @@ module.exports = function (userSettings) {
     var content = instance.querySelectorAll(settings.contentSelector)[0];
     var toggle = instance.querySelectorAll(settings.toggleSelector)[0];
     var toggleText = instance.querySelectorAll(settings.toggleTextSelector)[0];
-    console.log(settings.contentSelector);
-    console.log(settings.toggleSelector);
-    console.log(settings.toggleTextSelector);
 
     if (!content || !toggle || !toggleText) {
       if (settings.debug) {
