@@ -57,8 +57,8 @@ Use the following code example to get you started:
          <p>Lorem ipsum...</p>
     </div>
     <button data-summarize-more="Show more" data-summarize-less="Show less">
-         <i class="fa fa-check" aria-hidden="true"></i>
          <span>Show more</span>
+         <i class="fa fa-angle-right"></i>
     </button>
 </article>
 ```
