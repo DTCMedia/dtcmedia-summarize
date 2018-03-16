@@ -4,8 +4,8 @@ module.exports = function (settings) {
      * Set user settings or fallback to defaults
      */
     settings = {
-        debug: settings.debug === true,
-        defaultStyles: settings.defaultStyles === false,
+        debug: settings.debug === true ? true : false,
+        defaultStyles: settings.defaultStyles === false ? false : true,
         parentSelector: (typeof settings.parentSelector === 'string') ? settings.parentSelector : '.js-summarize',
         contentSelector: (typeof settings.contentSelector === 'string') ? settings.contentSelector : '.js-summarize-content',
         triggerSelector: (typeof settings.triggerSelector === 'string') ? settings.triggerSelector : '.js-summarize-trigger'
@@ -14,7 +14,7 @@ module.exports = function (settings) {
     if (settings.debug) {
         console.log('Summarize ~ Settings');
         console.log('  debug: ' + settings.debug);
-        console.log('  defaultStyles: \'' + settings.defaultStyles + '\'');
+        console.log('  defaultStyles: ' + settings.defaultStyles);
         console.log('  parentSelector: \'' + settings.parentSelector + '\'');
         console.log('  contentSelector: \'' + settings.contentSelector + '\'');
         console.log('  triggerSelector: \'' + settings.triggerSelector + '\'');
@@ -89,11 +89,11 @@ module.exports = function (settings) {
 
         const hideContent = () => {
             instance.classList.remove('is-active');
+            content.style.maxHeight = contentHeight + 'px';
             trigger.innerHTML = triggerMore;
 
             if(settings.defaultStyles) {
                 content.style.overflow = 'hidden';
-                content.style.maxHeight = contentHeight + 'px';
                 content.style.WebkitMaskImage = '-webkit-linear-gradient(top, black 0%, black 33.333%, transparent 100%)';
             }
 
@@ -106,11 +106,11 @@ module.exports = function (settings) {
 
         const showContent = () => {
             instance.classList.add('is-active');
+            content.style.maxHeight = 'none';
             trigger.innerHTML = triggerLess;
 
             if(settings.defaultStyles) {
                 content.style.overflow = 'visible';
-                content.style.maxHeight = 'none';
                 content.style.WebkitMaskImage = 'none';
             }
 
