@@ -1,5 +1,5 @@
 # Summarize
-Summarize content with the ability to toggle visibility.
+Summarize content with the ability to toggle visibility, the vanilla way.
 
 ## Install
 Install with Yarn:
