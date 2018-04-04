@@ -1,5 +1,7 @@
 "use strict";
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 module.exports = function (userSettings) {
   /**
    * Default settings for Summarize
@@ -16,7 +18,7 @@ module.exports = function (userSettings) {
    * Replace default settings with user settings
    */
 
-  var settings = Object.assign(defaultSettings, userSettings);
+  var settings = _extends(defaultSettings, userSettings);
 
   if (settings.debug) {
     console.log('Summarize ~ Settings');
