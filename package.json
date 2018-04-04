@@ -21,8 +21,10 @@
     "url": "https://github.com/DTCMedia/summarize/issues"
   },
   "homepage": "https://github.com/DTCMedia/summarize#readme",
+  "peerDependencies": {
+    "array-from": "^2.1.1"
+  },
   "devDependencies": {
-    "array-from": "^2.1.1",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-array-from": "^1.0.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
