@@ -6,5 +6,5 @@
       }
     }]
   ],
-  "plugins": ["transform-object-assign", "babel-plugin-transform-array-from"]
+  "plugins": ["transform-object-assign"]
 }

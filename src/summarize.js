@@ -30,8 +30,9 @@ module.exports = function (userSettings) {
     /**
      * Search for instances to summarize
      */
-    Array.from(document.querySelectorAll(settings.parentSelector)).forEach(instance => {
+    const parent = document.querySelectorAll(settings.parentSelector);
 
+    [...parent].forEach(instance => {
         if (settings.debug) {
             console.log('Summarize ~ Instance found');
         }
