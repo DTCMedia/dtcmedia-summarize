@@ -22,20 +22,16 @@
   },
   "homepage": "https://github.com/DTCMedia/summarize#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.41",
-    "@babel/preset-env": "^7.0.0-beta.41",
     "babel-core": "^6.26.0",
+    "babel-plugin-transform-array-from": "^1.0.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
-    "babelify": "^8.0.0",
+    "babel-preset-env": "^1.6.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^3.0.0"
   },
   "scripts": {
     "build": "gulp scripts && gulp scripts --minify"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.26.0"
   }
 }

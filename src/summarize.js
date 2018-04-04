@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 module.exports = function (userSettings) {
 
     /**
