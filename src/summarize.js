@@ -30,9 +30,10 @@ module.exports = function (userSettings) {
     /**
      * Search for instances to summarize
      */
-    const parent = document.querySelectorAll(settings.parentSelector);
+    const instances = document.querySelectorAll(settings.parentSelector);
 
-    [...parent].forEach(instance => {
+    for (let instance of instances) {
+
         if (settings.debug) {
             console.log('Summarize ~ Instance found');
         }
@@ -149,5 +150,5 @@ module.exports = function (userSettings) {
                 hideContent();
             }
         }
-    });
+    }
 };

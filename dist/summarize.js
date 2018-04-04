@@ -1,8 +1,8 @@
 'use strict';
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 module.exports = function (userSettings) {
 
@@ -36,9 +36,10 @@ module.exports = function (userSettings) {
     /**
      * Search for instances to summarize
      */
-    var parent = document.querySelectorAll(settings.parentSelector);
+    var instances = document.querySelectorAll(settings.parentSelector);
 
-    [].concat(_toConsumableArray(parent)).forEach(function (instance) {
+    var _loop = function _loop(instance) {
+
         if (settings.debug) {
             console.log('Summarize ~ Instance found');
         }
@@ -57,7 +58,9 @@ module.exports = function (userSettings) {
                 console.log('  Failed to initialize...');
             }
 
-            return;
+            return {
+                v: void 0
+            };
         }
 
         /**
@@ -75,7 +78,9 @@ module.exports = function (userSettings) {
                 console.log('  Failed to initialize...');
             }
 
-            return;
+            return {
+                v: void 0
+            };
         }
 
         /**
@@ -155,5 +160,32 @@ module.exports = function (userSettings) {
                 hideContent();
             }
         };
-    });
+    };
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = instances[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var instance = _step.value;
+
+            var _ret = _loop(instance);
+
+            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
+    }
 };
