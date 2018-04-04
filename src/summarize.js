@@ -32,7 +32,7 @@ module.exports = function (userSettings) {
      */
     const instances = document.querySelectorAll(settings.parentSelector);
 
-    for (let instance of instances) {
+    for (let i = 0; i < instances.length; i++) {
 
         if (settings.debug) {
             console.log('Summarize ~ Instance found');

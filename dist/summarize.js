@@ -38,7 +38,7 @@ module.exports = function (userSettings) {
      */
     var instances = document.querySelectorAll(settings.parentSelector);
 
-    var _loop = function _loop(instance) {
+    var _loop = function _loop(i) {
 
         if (settings.debug) {
             console.log('Summarize ~ Instance found');
@@ -162,30 +162,9 @@ module.exports = function (userSettings) {
         };
     };
 
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    for (var i = 0; i < instances.length; i++) {
+        var _ret = _loop(i);
 
-    try {
-        for (var _iterator = instances[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var instance = _step.value;
-
-            var _ret = _loop(instance);
-
-            if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
+        if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
     }
 };
