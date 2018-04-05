@@ -44,6 +44,8 @@ module.exports = function (userSettings) {
             console.log('Summarize ~ Instance found');
         }
 
+        var instance = instances[i];
+
         /**
          * Obtain elements required to summarize content
          */
