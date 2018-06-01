@@ -145,7 +145,9 @@ module.exports = function (userSettings) {
         /**
          * Toggle content visibility on click
          */
-        toggle.onclick = () => {
+        toggle.onclick = (event) => {
+        	event.preventDefault();
+
             if(shouldSummarize && isSummarized) {
                 showContent();
             } else {
